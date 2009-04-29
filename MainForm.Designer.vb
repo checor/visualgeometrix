@@ -1,11 +1,19 @@
-﻿'
-' Creado por SharpDevelop.
-' Usuario: checo
-' Fecha: 20/03/2009
-' Hora: 23:14
+﻿' Visual Geometrix - Aplicación didáctica
+' Copyright (C) 2009  Checor
 ' 
-' Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
-'
+' This program is free software; you can redistribute it and/or
+' modify it under the terms of the GNU General Public License
+' as published by the Free Software Foundation; either version 2
+' of the License, or (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program; if not, write to the Free Software
+' Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 Partial Class MainForm
 	Inherits System.Windows.Forms.Form
 	
@@ -103,23 +111,10 @@ Partial Class MainForm
 		Me.label22 = New System.Windows.Forms.Label
 		Me.label21 = New System.Windows.Forms.Label
 		Me.label20 = New System.Windows.Forms.Label
-		Me.tabInter = New System.Windows.Forms.TabPage
-		Me.listBox2 = New System.Windows.Forms.ListBox
-		Me.listBox1 = New System.Windows.Forms.ListBox
-		Me.button1 = New System.Windows.Forms.Button
-		Me.textBox14 = New System.Windows.Forms.TextBox
-		Me.textBox7 = New System.Windows.Forms.TextBox
-		Me.textBox6 = New System.Windows.Forms.TextBox
-		Me.textBox5 = New System.Windows.Forms.TextBox
-		Me.textBox4 = New System.Windows.Forms.TextBox
-		Me.textBox3 = New System.Windows.Forms.TextBox
-		Me.textBox2 = New System.Windows.Forms.TextBox
-		Me.textBox1 = New System.Windows.Forms.TextBox
-		Me.label19 = New System.Windows.Forms.Label
-		Me.label18 = New System.Windows.Forms.Label
-		Me.label17 = New System.Windows.Forms.Label
-		Me.label16 = New System.Windows.Forms.Label
-		Me.label15 = New System.Windows.Forms.Label
+		Me.tabElipse = New System.Windows.Forms.TabPage
+		Me.tabProcedimiento = New System.Windows.Forms.TabPage
+		Me.label12 = New System.Windows.Forms.Label
+		Me.txtLog = New System.Windows.Forms.TextBox
 		Me.pictureBox1 = New System.Windows.Forms.PictureBox
 		Me.lblTitle = New System.Windows.Forms.Label
 		Me.menuStrip1 = New System.Windows.Forms.MenuStrip
@@ -135,7 +130,7 @@ Partial Class MainForm
 		CType(Me.nudLineX,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabCirculo.SuspendLayout
 		Me.tabParabola.SuspendLayout
-		Me.tabInter.SuspendLayout
+		Me.tabProcedimiento.SuspendLayout
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.menuStrip1.SuspendLayout
 		Me.SuspendLayout
@@ -145,7 +140,8 @@ Partial Class MainForm
 		Me.tabLinea.Controls.Add(Me.tabLineas)
 		Me.tabLinea.Controls.Add(Me.tabCirculo)
 		Me.tabLinea.Controls.Add(Me.tabParabola)
-		Me.tabLinea.Controls.Add(Me.tabInter)
+		Me.tabLinea.Controls.Add(Me.tabElipse)
+		Me.tabLinea.Controls.Add(Me.tabProcedimiento)
 		Me.tabLinea.Location = New System.Drawing.Point(0, 74)
 		Me.tabLinea.Name = "tabLinea"
 		Me.tabLinea.SelectedIndex = 0
@@ -786,159 +782,43 @@ Partial Class MainForm
 		Me.label20.TabIndex = 0
 		Me.label20.Text = "Inserte la ecuación de la parabola horizontal:"
 		'
-		'tabInter
+		'tabElipse
 		'
-		Me.tabInter.Controls.Add(Me.listBox2)
-		Me.tabInter.Controls.Add(Me.listBox1)
-		Me.tabInter.Controls.Add(Me.button1)
-		Me.tabInter.Controls.Add(Me.textBox14)
-		Me.tabInter.Controls.Add(Me.textBox7)
-		Me.tabInter.Controls.Add(Me.textBox6)
-		Me.tabInter.Controls.Add(Me.textBox5)
-		Me.tabInter.Controls.Add(Me.textBox4)
-		Me.tabInter.Controls.Add(Me.textBox3)
-		Me.tabInter.Controls.Add(Me.textBox2)
-		Me.tabInter.Controls.Add(Me.textBox1)
-		Me.tabInter.Controls.Add(Me.label19)
-		Me.tabInter.Controls.Add(Me.label18)
-		Me.tabInter.Controls.Add(Me.label17)
-		Me.tabInter.Controls.Add(Me.label16)
-		Me.tabInter.Controls.Add(Me.label15)
-		Me.tabInter.Location = New System.Drawing.Point(4, 22)
-		Me.tabInter.Name = "tabInter"
-		Me.tabInter.Size = New System.Drawing.Size(290, 278)
-		Me.tabInter.TabIndex = 4
-		Me.tabInter.Text = "Inetersecciones"
-		Me.tabInter.UseVisualStyleBackColor = true
+		Me.tabElipse.Location = New System.Drawing.Point(4, 22)
+		Me.tabElipse.Name = "tabElipse"
+		Me.tabElipse.Size = New System.Drawing.Size(290, 278)
+		Me.tabElipse.TabIndex = 4
+		Me.tabElipse.Text = "Elipse"
+		Me.tabElipse.UseVisualStyleBackColor = true
 		'
-		'listBox2
+		'tabProcedimiento
 		'
-		Me.listBox2.FormattingEnabled = true
-		Me.listBox2.Items.AddRange(New Object() {"Linea", "Circulo"})
-		Me.listBox2.Location = New System.Drawing.Point(136, 32)
-		Me.listBox2.Name = "listBox2"
-		Me.listBox2.Size = New System.Drawing.Size(78, 30)
-		Me.listBox2.TabIndex = 17
+		Me.tabProcedimiento.Controls.Add(Me.label12)
+		Me.tabProcedimiento.Controls.Add(Me.txtLog)
+		Me.tabProcedimiento.Location = New System.Drawing.Point(4, 22)
+		Me.tabProcedimiento.Name = "tabProcedimiento"
+		Me.tabProcedimiento.Padding = New System.Windows.Forms.Padding(3)
+		Me.tabProcedimiento.Size = New System.Drawing.Size(290, 278)
+		Me.tabProcedimiento.TabIndex = 3
+		Me.tabProcedimiento.Text = "Procedimiento"
+		Me.tabProcedimiento.UseVisualStyleBackColor = true
 		'
-		'listBox1
+		'label12
 		'
-		Me.listBox1.FormattingEnabled = true
-		Me.listBox1.Items.AddRange(New Object() {"Linea", "Circulo"})
-		Me.listBox1.Location = New System.Drawing.Point(15, 32)
-		Me.listBox1.Name = "listBox1"
-		Me.listBox1.Size = New System.Drawing.Size(82, 30)
-		Me.listBox1.TabIndex = 16
+		Me.label12.Location = New System.Drawing.Point(8, 9)
+		Me.label12.Name = "label12"
+		Me.label12.Size = New System.Drawing.Size(178, 18)
+		Me.label12.TabIndex = 1
+		Me.label12.Text = "Procedimiento de la última acción:"
 		'
-		'button1
+		'txtLog
 		'
-		Me.button1.Location = New System.Drawing.Point(213, 69)
-		Me.button1.Name = "button1"
-		Me.button1.Size = New System.Drawing.Size(66, 25)
-		Me.button1.TabIndex = 15
-		Me.button1.Text = "Calcular"
-		Me.button1.UseVisualStyleBackColor = true
-		'
-		'textBox14
-		'
-		Me.textBox14.Location = New System.Drawing.Point(185, 153)
-		Me.textBox14.Name = "textBox14"
-		Me.textBox14.Size = New System.Drawing.Size(63, 20)
-		Me.textBox14.TabIndex = 14
-		'
-		'textBox7
-		'
-		Me.textBox7.Location = New System.Drawing.Point(185, 126)
-		Me.textBox7.Name = "textBox7"
-		Me.textBox7.Size = New System.Drawing.Size(63, 20)
-		Me.textBox7.TabIndex = 13
-		'
-		'textBox6
-		'
-		Me.textBox6.Location = New System.Drawing.Point(136, 101)
-		Me.textBox6.Name = "textBox6"
-		Me.textBox6.Size = New System.Drawing.Size(61, 20)
-		Me.textBox6.TabIndex = 12
-		'
-		'textBox5
-		'
-		Me.textBox5.Location = New System.Drawing.Point(72, 99)
-		Me.textBox5.Name = "textBox5"
-		Me.textBox5.Size = New System.Drawing.Size(25, 20)
-		Me.textBox5.TabIndex = 11
-		'
-		'textBox4
-		'
-		Me.textBox4.Location = New System.Drawing.Point(15, 97)
-		Me.textBox4.Name = "textBox4"
-		Me.textBox4.Size = New System.Drawing.Size(25, 20)
-		Me.textBox4.TabIndex = 10
-		'
-		'textBox3
-		'
-		Me.textBox3.Location = New System.Drawing.Point(136, 72)
-		Me.textBox3.Name = "textBox3"
-		Me.textBox3.Size = New System.Drawing.Size(61, 20)
-		Me.textBox3.TabIndex = 9
-		'
-		'textBox2
-		'
-		Me.textBox2.Location = New System.Drawing.Point(72, 72)
-		Me.textBox2.Name = "textBox2"
-		Me.textBox2.Size = New System.Drawing.Size(25, 20)
-		Me.textBox2.TabIndex = 8
-		'
-		'textBox1
-		'
-		Me.textBox1.Location = New System.Drawing.Point(15, 71)
-		Me.textBox1.Name = "textBox1"
-		Me.textBox1.Size = New System.Drawing.Size(25, 20)
-		Me.textBox1.TabIndex = 7
-		'
-		'label19
-		'
-		Me.label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label19.Location = New System.Drawing.Point(15, 148)
-		Me.label19.Name = "label19"
-		Me.label19.Size = New System.Drawing.Size(246, 27)
-		Me.label19.TabIndex = 6
-		Me.label19.Text = "x  + y  +    x +    y ="
-		'
-		'label18
-		'
-		Me.label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label18.Location = New System.Drawing.Point(15, 121)
-		Me.label18.Name = "label18"
-		Me.label18.Size = New System.Drawing.Size(246, 27)
-		Me.label18.TabIndex = 5
-		Me.label18.Text = "x  + y  +    x +    y ="
-		'
-		'label17
-		'
-		Me.label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label17.Location = New System.Drawing.Point(15, 94)
-		Me.label17.Name = "label17"
-		Me.label17.Size = New System.Drawing.Size(246, 27)
-		Me.label17.TabIndex = 4
-		Me.label17.Text = "     x +      y ="
-		Me.label17.Visible = false
-		'
-		'label16
-		'
-		Me.label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label16.Location = New System.Drawing.Point(15, 67)
-		Me.label16.Name = "label16"
-		Me.label16.Size = New System.Drawing.Size(192, 27)
-		Me.label16.TabIndex = 3
-		Me.label16.Text = "     x +      y ="
-		Me.label16.Visible = false
-		'
-		'label15
-		'
-		Me.label15.Location = New System.Drawing.Point(15, 9)
-		Me.label15.Name = "label15"
-		Me.label15.Size = New System.Drawing.Size(260, 20)
-		Me.label15.TabIndex = 1
-		Me.label15.Text = "Elija el punto de intersección a calcular:"
+		Me.txtLog.Cursor = System.Windows.Forms.Cursors.Default
+		Me.txtLog.Location = New System.Drawing.Point(8, 30)
+		Me.txtLog.Multiline = true
+		Me.txtLog.Name = "txtLog"
+		Me.txtLog.Size = New System.Drawing.Size(276, 216)
+		Me.txtLog.TabIndex = 0
 		'
 		'pictureBox1
 		'
@@ -953,7 +833,7 @@ Partial Class MainForm
 		'lblTitle
 		'
 		Me.lblTitle.Font = New System.Drawing.Font("Gill Sans MT", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.lblTitle.Location = New System.Drawing.Point(25, 21)
+		Me.lblTitle.Location = New System.Drawing.Point(19, 30)
 		Me.lblTitle.Name = "lblTitle"
 		Me.lblTitle.Size = New System.Drawing.Size(304, 34)
 		Me.lblTitle.TabIndex = 2
@@ -1018,6 +898,7 @@ Partial Class MainForm
 		Me.MainMenuStrip = Me.menuStrip1
 		Me.Name = "MainForm"
 		Me.Text = "Visual Geometrix"
+'		AddHandler Load, AddressOf Me.MainFormLoad
 		Me.tabLinea.ResumeLayout(false)
 		Me.tabLineas.ResumeLayout(false)
 		Me.tabLineas.PerformLayout
@@ -1027,14 +908,18 @@ Partial Class MainForm
 		Me.tabCirculo.PerformLayout
 		Me.tabParabola.ResumeLayout(false)
 		Me.tabParabola.PerformLayout
-		Me.tabInter.ResumeLayout(false)
-		Me.tabInter.PerformLayout
+		Me.tabProcedimiento.ResumeLayout(false)
+		Me.tabProcedimiento.PerformLayout
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).EndInit
 		Me.menuStrip1.ResumeLayout(false)
 		Me.menuStrip1.PerformLayout
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private txtLog As System.Windows.Forms.TextBox
+	Private label12 As System.Windows.Forms.Label
+	Private tabProcedimiento As System.Windows.Forms.TabPage
+	Private tabElipse As System.Windows.Forms.TabPage
 	Private txtPvrF As System.Windows.Forms.TextBox
 	Private label29 As System.Windows.Forms.Label
 	Private butGrPVG As System.Windows.Forms.Button
@@ -1061,22 +946,6 @@ Partial Class MainForm
 	Private txtPvrD As System.Windows.Forms.TextBox
 	Private txtPvrE As System.Windows.Forms.TextBox
 	Private txtPvrA As System.Windows.Forms.TextBox
-	Private listBox1 As System.Windows.Forms.ListBox
-	Private listBox2 As System.Windows.Forms.ListBox
-	Private label16 As System.Windows.Forms.Label
-	Private label17 As System.Windows.Forms.Label
-	Private label18 As System.Windows.Forms.Label
-	Private label19 As System.Windows.Forms.Label
-	Private textBox1 As System.Windows.Forms.TextBox
-	Private textBox2 As System.Windows.Forms.TextBox
-	Private textBox3 As System.Windows.Forms.TextBox
-	Private textBox4 As System.Windows.Forms.TextBox
-	Private textBox5 As System.Windows.Forms.TextBox
-	Private textBox6 As System.Windows.Forms.TextBox
-	Private textBox7 As System.Windows.Forms.TextBox
-	Private textBox14 As System.Windows.Forms.TextBox
-	Private button1 As System.Windows.Forms.Button
-	Private label15 As System.Windows.Forms.Label
 	Private txtXce2 As System.Windows.Forms.TextBox
 	Private txtCoEc2 As System.Windows.Forms.TextBox
 	Private txtYce2 As System.Windows.Forms.TextBox
@@ -1126,11 +995,12 @@ Partial Class MainForm
 	Private txtConstLine As System.Windows.Forms.TextBox
 	Private lblTitle As System.Windows.Forms.Label
 	Private pictureBox1 As System.Windows.Forms.PictureBox
-	Private tabInter As System.Windows.Forms.TabPage
 	Private tabParabola As System.Windows.Forms.TabPage
 	Private tabCirculo As System.Windows.Forms.TabPage
 	Private tabLineas As System.Windows.Forms.TabPage
 	Private tabLinea As System.Windows.Forms.TabControl
+	
+
 	
 
 End Class

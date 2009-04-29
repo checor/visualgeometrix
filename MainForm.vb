@@ -1,6 +1,21 @@
-﻿'Geometrico Analitico
-'Version Pre-Alpha 0.0 Unstable
-'Checor
+﻿' Visual Geometrix - Aplicación didáctica
+' Copyright (C) 2009  Checor
+' 
+' This program is free software; you can redistribute it and/or
+' modify it under the terms of the GNU General Public License
+' as published by the Free Software Foundation; either version 2
+' of the License, or (at your option) any later version.
+' 
+' This program is distributed in the hope that it will be useful,
+' but WITHOUT ANY WARRANTY; without even the implied warranty of
+' MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+' GNU General Public License for more details.
+' 
+' You should have received a copy of the GNU General Public License
+' along with this program; if not, write to the Free Software
+' Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+'Preparando para comentar los procedimientos!!!1!!uno!
 Option Explicit On
 Imports System.Drawing.Drawing2D
 Imports System.Math
@@ -12,6 +27,13 @@ Public Partial Class MainForm
 		'
 		' TODO : Add constructor code after InitializeComponents
 		'
+	End Sub
+	Public Sub printf(texto as String)
+		Me.txtLog.AppendText(texto)
+		me.txtLog.AppendText(vbCrLf)'Esto en "\n" en C
+	End Sub
+	Public Sub clrscr()
+		me.txtLog.Text = ""
 	End Sub
 	Public Sub Cuadricula()
         'Codigo propiedad de Percy Reyes
@@ -37,18 +59,27 @@ Public Partial Class MainForm
         Next
     End Sub
     Public function distancia(x1 As Single,y1 As Single, x2 As Single, y2 As Single) as Single
+    	dim texto as String
+    	texto="Obtener distancia de "& x1 &"," & y1 &") a (" & x2 &"," & y2 &")"
+    	printf(texto)
     	distancia=Sqrt((y2-y1)^2 + (x2 - x1)^2)
+    	texto="La distancia es:" & distancia
+    	printf(texto)
     End function
 	Public Sub graficaLinea(x1 As Single, y1 As Single, x2 as single, y2 as single)
-		'Funciona ok
+		'Existe el problema con imprime curva a la hora de imprimir
+		dim texto as String
 		Dim centro As Single = Me.pictureBox1.Height / 2
 		Dim punto As Single = Me.pictureBox1.Height / 13
+		texto="Graficar una linea de (" & x1 & "," & y1 & ") a (" & x2 & "," & y2 & ")"
+		printf(texto)
 		Me.pictureBox1.CreateGraphics.DrawLine(New Pen(color.Blue,1), _
 		New PointF(centro + ((x1/2)*punto),centro + ((y1/-2)*punto)), _
 		New PointF(centro + ((x2/2)*punto),centro + ((y2/-2)*punto)) )
 	End Sub
 	Public Sub imprimecurva(cx As Single, ex As Single, cy As Single, ey As Single, Constante As Single, margen as Single)
 		'No imprime circulos ni elipses! Tira error!
+		'Falta mejorar en este campo el LOG
 		Dim a(0 To 1) As Single
 		if ey = 2  or ex+ey=2 then
 			a(0) = ((constante - cy * -14 ^ ey) / cx) ^ ( 1 / ex)
@@ -76,6 +107,15 @@ Public Partial Class MainForm
 	End Sub
 	Public Sub dibujacirculo(h As Single, k As Single, hr As Single, vr as single)
 		'OK
+		dim texto as String
+		If hr = vr Then
+			texto = "Trazar una circunferencia con el centro en (" & h & "," & k & ")" _
+			& " con un radio de " & hr
+		Else
+			texto = "Trazar una elipse con el centro en (" & h & "," & k & ")" _
+			& ", distancia del centro a A de " & hr & " y del centro a C de " & vr
+		End If
+		printf(texto)
 		Dim centro As Single = Me.pictureBox1.Height / 2
 		Dim punto As Single = Me.pictureBox1.Height / 13
 		h=centro+(punto/-2 * (h)) : k = centro+(punto/-2 * (k))
@@ -83,69 +123,6 @@ Public Partial Class MainForm
 		Me.pictureBox1.creategraphics.drawellipse(New pen(color.Blue,1), _
 		h-hr/2 ,k-vr/2 , hr, vr)
 	End Sub
-	public function interline (cx As Single, cy As Single, cons As Single,cx2 As Single ,cy2 As Single,cons2 As Single) as String
-		'ini
-		dim ori as Single=cx:dim ori2 as Single=cy: dim ori3 as Single=cons
-		cx=cx*cx2:cy=cy*cx2:cons=cons*cx2
-		cx2=cx2*ori:cy2=cy2*ori:cons2=cons2*ori
-		cy=cy-cy2:cons=cons-cons2
-		Dim y As Single = cons/cy:Dim x As Single= (ori2*y-ori3)/ori
-		dim nep as String = "(" & x & "," & y & ")"
-		interline = nep
-	End function
-	Public Function FindLineCircleIntersections(ByVal cx As _
-    	Single, ByVal cy As Single, ByVal radius As Single, _
-	    ByVal x1 As Single, ByVal y1 As Single, ByVal x2 As _
-    	Single, ByVal y2 As Single) As string 'Codigo de dominio publico
-	    Dim dx As Single: dim ix1 as Single: dim iy1 as Single
-	    Dim dy As Single: dim ix2 as Single: dim iy2 as Single
-	    Dim A As Single
-	    Dim B As Single
-	    Dim C As Single
-	    Dim det As Single
-	    Dim t As Single
-
-	    dx = x2 - x1
-	    dy = y2 - y1
-
-	    A = dx * dx + dy * dy
-	    B = 2 * (dx * (x1 - cx) + dy * (y1 - cy))
-	    C = (x1 - cx) * (x1 - cx) + (y1 - cy) * (y1 - cy) - _
-	        radius * radius
-
- 	   det = B * B - 4 * A * C
-	    If (A <= 0.0000001) Or (det < 0) Then
-	        ' No real solutions.
-	        FindLineCircleIntersections = ""
-	    ElseIf det = 0 Then
-	        ' One solution.
-	        t = -B / (2 * A)
-	        ix1 = x1 + t * dx
-	        iy1 = y1 + t * dy
-	        dim nep as string = "(" & ix1 & "," & iy1 & ")"
-			FindLineCircleIntersections = nep
-		Else
-	        ' Two solutions.
-	        t = (-B + Sqrt(det)) / (2 * A)
-	        ix1 = x1 + t * dx
-	        iy1 = y1 + t * dy
-	        t = (-B - Sqrt(det)) / (2 * A)
-	        ix2 = x1 + t * dx
-	        iy2 = y1 + t * dy
-	        Dim nepe As String
-	        nepe ="(" & ix1 & "," & iy1 & ") (" & ix2 & "," & iy2 & ")"
-			FindLineCircleIntersections = nepe
-	    End If
-	End Function
-	Public Function interlinecircle(x As Single, y As Single, cons As Single, x2 As Single,y2 as Single, cons2 as Single) As String
-		Dim equis1 As Single = (cons - y*100)/x
-		Dim ye1 As Single =(cons - x*100)/y
-		Dim equis2 As Single = (cons - y*-100)/x
-		Dim ye2 As Single =(cons - x*-100)/y
-		Dim radio As Single = sqrt(cons2)
-		Dim resultado As String = FindLineCircleIntersections(-x2,-y2,radio,equis1,ye1,equis2,ye2)
-		interlinecircle = resultado
-	End Function
 	Sub ButCalculaelClick(ByVal sender As Object, ByVal e As EventArgs)
 		cuadricula()
 		imprimecurva(val(Me.txtXline.Text),val(Me.nudLineX.Value), _
