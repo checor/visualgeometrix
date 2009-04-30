@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 # SharpDevelop 2.2.1.2648
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "temp", "temp.vbproj", "{10747559-33AE-4FC7-9E94-B85B4CCF981D}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Visual Geometrix", "temp.vbproj", "{10747559-33AE-4FC7-9E94-B85B4CCF981D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

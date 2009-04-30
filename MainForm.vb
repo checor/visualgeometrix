@@ -1,4 +1,4 @@
-﻿' Visual Geometrix - Aplicación didáctica
+﻿' Visual Geometrix - Aplicación didáctica para Geometría Analítica
 ' Copyright (C) 2009  Checor
 ' 
 ' This program is free software; you can redistribute it and/or
@@ -68,42 +68,54 @@ Public Partial Class MainForm
     End function
 	Public Sub graficaLinea(x1 As Single, y1 As Single, x2 as single, y2 as single)
 		'Existe el problema con imprime curva a la hora de imprimir
-		dim texto as String
+		'dim texto as String
 		Dim centro As Single = Me.pictureBox1.Height / 2
 		Dim punto As Single = Me.pictureBox1.Height / 13
-		texto="Graficar una linea de (" & x1 & "," & y1 & ") a (" & x2 & "," & y2 & ")"
-		printf(texto)
+		'texto="Graficar una linea de (" & x1 & "," & y1 & ") a (" & x2 & "," & y2 & ")"
+	'	printf(texto)
 		Me.pictureBox1.CreateGraphics.DrawLine(New Pen(color.Blue,1), _
 		New PointF(centro + ((x1/2)*punto),centro + ((y1/-2)*punto)), _
 		New PointF(centro + ((x2/2)*punto),centro + ((y2/-2)*punto)) )
 	End Sub
-	Public Sub imprimecurva(cx As Single, ex As Single, cy As Single, ey As Single, Constante As Single, margen as Single)
+	Public Sub imprimecurva(cx As Single, cy As Single, Constante As Single)
 		'No imprime circulos ni elipses! Tira error!
 		'Falta mejorar en este campo el LOG
-		Dim a(0 To 1) As Single
-		if ey = 2  or ex+ey=2 then
-			a(0) = ((constante - cy * -14 ^ ey) / cx) ^ ( 1 / ex)
-			a(1) = ((constante-cy* (-14 + margen) ^ ey)/cx) ^ (1/ex) 
-			graficalinea(a(0),-14,a(1),-14+margen)
-			Dim i As Single =-14 + (margen * 2)
-			While i < 14 
-				a(0) = a(1)
-				a(1) = ((constante-cy*i ^ ey)/cx) ^ (1/ex)
-				graficalinea(a(0),i-margen,a(1),i)
-				i = i + margen
-			End While
-		Else 'Ye
-			a(0) = ((constante - cx * -14 ^ ex) / cy) ^ ( 1 / ey)
-			a(1) = ((constante-cx* (-14 + margen) ^ ex)/cy) ^ (1/ey) 
-			graficalinea(a(0),-14,a(1),-14+margen)
-			Dim i As Single =-14 + (margen * 2)
-			While i < 14 
-				a(0) = a(1)
-				a(1) = ((constante-cx*i ^ ex)/cy) ^ (1/ey)
-				graficalinea(i-margen,a(0),i,a(1))
-				i = i + margen
-			End While
-		End if
+		'Ahora ya no aceptan exponentes ni margen de error
+		Dim texto As String
+		texto = "Graficar una linea con la ecuación " & cx & "x + " & cy & "y = " & Constante & " ..."
+		printf(texto)
+		texto = "En la ecuación X = (" & constante & " - " & cy & "y) /" & cx
+		printf(texto)
+		texto = "En la ecuación Y = (" & constante & " - " & cx & "x) /" & cy
+		printf(texto)
+		If cx = 0 or cy = 0 Then
+			printf("No es posible graficar con los parametros dados.")
+		elseIf cx < 0 or cx > 0 Then
+			texto = "Sustituir X a -14 para graficar en el área del plano"
+			printf(texto)
+			Dim menosy As Single = (constante -(cx*-14)) / cy 'Y
+			texto = "Punto 1 de la linea = (-14 , " & menosy & ")"
+			printf(texto)
+			Dim masy As Single = (constante -(cx*14)) / cy
+			texto = "Punto 2 de la linea = (14 , " & masy & ")"
+			printf(texto)
+			graficaLinea(-14,menosy,14,masy)
+			texto = "Se grafica la línea con los puntos mencionados"
+			printf(texto)
+		Else ' Se hace con y
+			texto = "Sustituir Y a -14 para graficar en el área del plano"
+			printf(texto)
+			Dim menosx As Single = (constante -(cy*-14)) / cx 'X
+			texto = "Punto 1 de la linea = (" & menosx & " , -14)"
+			printf(texto)
+			Dim masx As Single = (constante -(cy*14)) / cx
+			texto = "Punto 2 de la linea = (" & masx & " , 14)"
+			printf(texto)
+			graficaLinea(menosx,-14,masx,14)
+			texto = "Se grafica la línea con los puntos mencionados"
+			printf(texto)
+		End If
+		printf("")'Dejando un enter
 	End Sub
 	Public Sub dibujacirculo(h As Single, k As Single, hr As Single, vr as single)
 		'OK
@@ -123,12 +135,6 @@ Public Partial Class MainForm
 		Me.pictureBox1.creategraphics.drawellipse(New pen(color.Blue,1), _
 		h-hr/2 ,k-vr/2 , hr, vr)
 	End Sub
-	Sub ButCalculaelClick(ByVal sender As Object, ByVal e As EventArgs)
-		cuadricula()
-		imprimecurva(val(Me.txtXline.Text),val(Me.nudLineX.Value), _
-					val(Me.txtYline.Text), val(Me.nudLineY.Value), _
-					val(me.txtConstLine.Text), .1)
-	End Sub
 	Sub PictureBox1Click(ByVal sender As Object, ByVal e As EventArgs)
 		Me.pictureBox1.Refresh
 		cuadricula()
@@ -137,16 +143,6 @@ Public Partial Class MainForm
 		cuadricula()
 		graficalinea(val(Me.txtLinea1.Text),val(Me.txtLinea2.Text),val(Me.txtLinea3.Text), _
 					val(Me.txtLinea4.Text))
-	End Sub
-	Sub NudLineXValueChanged(ByVal sender As Object, ByVal e As EventArgs)
-		If Me.nudLineY.Value = 2 And Me.nudLineX.Value = 2 Then
-			me.nudLineY.Value = 1
-		End If
-	End Sub
-	Sub NudLineYValueChanged(ByVal sender As Object, ByVal e As EventArgs)
-		If Me.nudLineY.Value = 2 And Me.nudLineX.Value = 2 Then
-			me.nudLineX.Value = 1
-		End If
 	End Sub
 	Sub ButEcuacircu1Click(ByVal sender As Object, ByVal e As EventArgs)
 		'Se necesita convertir la ecuacion a tipo 2 para graficar
@@ -250,6 +246,7 @@ Public Partial Class MainForm
 	End Sub
 	
 	Sub ButGrPVRClick(ByVal sender As Object, ByVal e As EventArgs)
+		'Quitar las gillipoleces de on error
 		on error goto err:
 		parabolahorizontalreduced(val(txtPvrA.Text),val(txtPvrP.Text),val(txtPvrB.Text))
 		err:
@@ -260,5 +257,8 @@ Public Partial Class MainForm
 		On Error GoTo err:
 		parabolahorizontal(val(txtPvrD.Text),val(txtPvrE.Text),val(txtPvrF.Text))
 		err:
+	End Sub
+	Sub ButCalculaelClick(ByVal sender As Object, ByVal e As EventArgs)
+		imprimecurva(val(me.txtXline.Text),val(me.txtYline.Text),val(me.txtConstLine.Text))
 	End Sub
 End Class

@@ -44,8 +44,6 @@ Partial Class MainForm
 		Me.tabLinea = New System.Windows.Forms.TabControl
 		Me.tabLineas = New System.Windows.Forms.TabPage
 		Me.lblPeri = New System.Windows.Forms.Label
-		Me.nudLineY = New System.Windows.Forms.NumericUpDown
-		Me.nudLineX = New System.Windows.Forms.NumericUpDown
 		Me.butCalculapl = New System.Windows.Forms.Button
 		Me.txtLinea4 = New System.Windows.Forms.TextBox
 		Me.txtLinea3 = New System.Windows.Forms.TextBox
@@ -126,8 +124,6 @@ Partial Class MainForm
 		Me.acercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
 		Me.tabLinea.SuspendLayout
 		Me.tabLineas.SuspendLayout
-		CType(Me.nudLineY,System.ComponentModel.ISupportInitialize).BeginInit
-		CType(Me.nudLineX,System.ComponentModel.ISupportInitialize).BeginInit
 		Me.tabCirculo.SuspendLayout
 		Me.tabParabola.SuspendLayout
 		Me.tabProcedimiento.SuspendLayout
@@ -151,8 +147,6 @@ Partial Class MainForm
 		'tabLineas
 		'
 		Me.tabLineas.Controls.Add(Me.lblPeri)
-		Me.tabLineas.Controls.Add(Me.nudLineY)
-		Me.tabLineas.Controls.Add(Me.nudLineX)
 		Me.tabLineas.Controls.Add(Me.butCalculapl)
 		Me.tabLineas.Controls.Add(Me.txtLinea4)
 		Me.tabLineas.Controls.Add(Me.txtLinea3)
@@ -176,35 +170,11 @@ Partial Class MainForm
 		'
 		'lblPeri
 		'
-		Me.lblPeri.Location = New System.Drawing.Point(15, 126)
+		Me.lblPeri.Location = New System.Drawing.Point(15, 132)
 		Me.lblPeri.Name = "lblPeri"
 		Me.lblPeri.Size = New System.Drawing.Size(244, 25)
 		Me.lblPeri.TabIndex = 18
 		Me.lblPeri.Text = "Perimetro de la linea (aprox):"
-		'
-		'nudLineY
-		'
-		Me.nudLineY.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.nudLineY.Location = New System.Drawing.Point(115, 26)
-		Me.nudLineY.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
-		Me.nudLineY.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-		Me.nudLineY.Name = "nudLineY"
-		Me.nudLineY.Size = New System.Drawing.Size(26, 18)
-		Me.nudLineY.TabIndex = 17
-		Me.nudLineY.Value = New Decimal(New Integer() {1, 0, 0, 0})
-		AddHandler Me.nudLineY.ValueChanged, AddressOf Me.NudLineYValueChanged
-		'
-		'nudLineX
-		'
-		Me.nudLineX.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.nudLineX.Location = New System.Drawing.Point(47, 26)
-		Me.nudLineX.Maximum = New Decimal(New Integer() {2, 0, 0, 0})
-		Me.nudLineX.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-		Me.nudLineX.Name = "nudLineX"
-		Me.nudLineX.Size = New System.Drawing.Size(26, 18)
-		Me.nudLineX.TabIndex = 16
-		Me.nudLineX.Value = New Decimal(New Integer() {1, 0, 0, 0})
-		AddHandler Me.nudLineX.ValueChanged, AddressOf Me.NudLineXValueChanged
 		'
 		'butCalculapl
 		'
@@ -254,7 +224,7 @@ Partial Class MainForm
 		'
 		'butCalculael
 		'
-		Me.butCalculael.Location = New System.Drawing.Point(209, 39)
+		Me.butCalculael.Location = New System.Drawing.Point(185, 39)
 		Me.butCalculael.Name = "butCalculael"
 		Me.butCalculael.Size = New System.Drawing.Size(61, 21)
 		Me.butCalculael.TabIndex = 7
@@ -264,14 +234,14 @@ Partial Class MainForm
 		'
 		'txtConstLine
 		'
-		Me.txtConstLine.Location = New System.Drawing.Point(162, 41)
+		Me.txtConstLine.Location = New System.Drawing.Point(117, 40)
 		Me.txtConstLine.Name = "txtConstLine"
-		Me.txtConstLine.Size = New System.Drawing.Size(41, 20)
+		Me.txtConstLine.Size = New System.Drawing.Size(62, 20)
 		Me.txtConstLine.TabIndex = 6
 		'
 		'txtYline
 		'
-		Me.txtYline.Location = New System.Drawing.Point(84, 41)
+		Me.txtYline.Location = New System.Drawing.Point(67, 40)
 		Me.txtYline.Name = "txtYline"
 		Me.txtYline.Size = New System.Drawing.Size(19, 20)
 		Me.txtYline.TabIndex = 4
@@ -283,7 +253,7 @@ Partial Class MainForm
 		Me.label2.Name = "label2"
 		Me.label2.Size = New System.Drawing.Size(131, 18)
 		Me.label2.TabIndex = 2
-		Me.label2.Text = "X      +        Y      ="
+		Me.label2.Text = "X  +        Y ="
 		'
 		'txtXline
 		'
@@ -817,7 +787,8 @@ Partial Class MainForm
 		Me.txtLog.Location = New System.Drawing.Point(8, 30)
 		Me.txtLog.Multiline = true
 		Me.txtLog.Name = "txtLog"
-		Me.txtLog.Size = New System.Drawing.Size(276, 216)
+		Me.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+		Me.txtLog.Size = New System.Drawing.Size(276, 214)
 		Me.txtLog.TabIndex = 0
 		'
 		'pictureBox1
@@ -898,12 +869,9 @@ Partial Class MainForm
 		Me.MainMenuStrip = Me.menuStrip1
 		Me.Name = "MainForm"
 		Me.Text = "Visual Geometrix"
-'		AddHandler Load, AddressOf Me.MainFormLoad
 		Me.tabLinea.ResumeLayout(false)
 		Me.tabLineas.ResumeLayout(false)
 		Me.tabLineas.PerformLayout
-		CType(Me.nudLineY,System.ComponentModel.ISupportInitialize).EndInit
-		CType(Me.nudLineX,System.ComponentModel.ISupportInitialize).EndInit
 		Me.tabCirculo.ResumeLayout(false)
 		Me.tabCirculo.PerformLayout
 		Me.tabParabola.ResumeLayout(false)
@@ -978,8 +946,6 @@ Partial Class MainForm
 	Private textBox12 As System.Windows.Forms.TextBox
 	Private textBox13 As System.Windows.Forms.TextBox
 	Private lblPeri As System.Windows.Forms.Label
-	Private nudLineY As System.Windows.Forms.NumericUpDown
-	Private nudLineX As System.Windows.Forms.NumericUpDown
 	Private txtLinea4 As System.Windows.Forms.TextBox
 	Private txtLinea3 As System.Windows.Forms.TextBox
 	Private txtLinea2 As System.Windows.Forms.TextBox
