@@ -15,7 +15,7 @@
 ' along with this program; if not, write to the Free Software
 ' Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-'Preparando para comentar los procedimientos!!!1!!uno!
+'No se recomienda usar TAB al usar el programa
 Option Explicit On
 Imports System.Drawing.Drawing2D
 Imports System.Math
@@ -118,16 +118,7 @@ Public Partial Class MainForm
 		printf("")'Dejando un enter
 	End Sub
 	Public Sub dibujacirculo(h As Single, k As Single, hr As Single, vr as single)
-		'OK
-		dim texto as String
-		If hr = vr Then
-			texto = "Trazar una circunferencia con el centro en (" & h & "," & k & ")" _
-			& " con un radio de " & hr
-		Else
-			texto = "Trazar una elipse con el centro en (" & h & "," & k & ")" _
-			& ", distancia del centro a A de " & hr & " y del centro a C de " & vr
-		End If
-		printf(texto)
+		'Quitado el LOG de dibujacirculo, pasado a funciones mas altas
 		Dim centro As Single = Me.pictureBox1.Height / 2
 		Dim punto As Single = Me.pictureBox1.Height / 13
 		h=centro+(punto/-2 * (h)) : k = centro+(punto/-2 * (k))
@@ -145,20 +136,47 @@ Public Partial Class MainForm
 					val(Me.txtLinea4.Text))
 	End Sub
 	Sub ButEcuacircu1Click(ByVal sender As Object, ByVal e As EventArgs)
-		'Se necesita convertir la ecuacion a tipo 2 para graficar
+		'Ecuación larga del circulo
+		dim texto as string
 		Dim x As Single = val(txtXce1.Text)
 		Dim y As Single = val(Me.txtYce1.Text)
 		Dim cons As Single = val(Me.txtCoEc1.Text)
+		texto = "Graficar un círculo con la ecuación X^2 + Y^2 + " & x & "x + " & y & "y = " & cons
+		printf(texto)
 		Dim h As Single = x/2 : dim k as Single = -y/2
-		Dim radio As Single = sqrt((x/2)^2+(y/2)^2 + cons)
+		texto = "Coordenada x (h) del centro del círculo = " & x & "/2 = " & h
+		printf(texto)
+		texto = "Coordenada y (k) del centro del círculo = " & -y & "/2 = " & k
+		printf(texto)
+		texto = "Ecuación del radio: r^2 = (h/2)^2 + (k/2)^2 - constante"
+		printf(texto)
+		texto = "Sustituyendo: r^2 =( " & h & " /2)^2 + ( " & k & " /2)^2 + " & cons
+		printf(texto)
+		Dim radio As Single = sqrt((x/2)^2 + (y/2)^2 + cons)
+		texto = "El radio es: " & radio
+		printf(texto)
+		texto = "Dibujar el círculo con los datos anteriores"
+		printf(texto)
+		printf("")
 		dibujacirculo(h,k,radio,radio)
 	End Sub
 	Sub ButEcuacircu2Click(ByVal sender As Object, ByVal e As EventArgs)
+		'Ecuacion tipo uno del circulo (la simplificada)
+		dim texto as string
 		Dim x As Single = val(txtXce2.Text)
 		Dim y As Single = val(Me.txtYce2.Text)
 		Dim cons As Single = val(Me.txtCoEc2.Text)
+		texto = "Graficar circulo con la ecuación (x - " & x & ")^2 + (y - " & y & ")^2 = " & cons
+		printf(texto)
 		Dim h As Single = -x : dim k as Single = y
+		texto = "Coordenadas del centro de la circunferencia ( " & h & " , " & k & " )"
+		printf(texto)
 		Dim radio As Single = sqrt(cons)
+		texto = "Radio del círculo: " & radio
+		printf(texto)
+		texto = "Graficar el círculo con los datos anteriores"
+		printf(texto)
+		printf("")
 		dibujacirculo(h,k,radio,radio)
 	End Sub
 	public sub parabolaverti(D as single,E as single,F as single)
