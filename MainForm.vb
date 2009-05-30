@@ -59,7 +59,7 @@ Public Partial Class MainForm
     End Sub
     Public function distancia(x1 As Single,y1 As Single, x2 As Single, y2 As Single) as Single
     	dim texto as String
-    	texto="Obtener distancia de "& x1 &"," & y1 &") a (" & x2 &"," & y2 &")"
+    	texto="Obtener distancia de ("& x1 &"," & y1 &") a (" & x2 &"," & y2 &")"
     	printf(texto)
     	distancia=Sqrt((y2-y1)^2 + (x2 - x1)^2)
 		texto="Distancia = raiz(("&y2 &"- "&y1 &")^2 + ("&x2 &"- "&x1 &")^2)"
@@ -70,7 +70,7 @@ Public Partial Class MainForm
 	Public Sub graficaLinea(x1 As Single, y1 As Single, x2 as single, y2 as single)
 		'Ahora esta funcion ya no muestra LOG
 		Dim centro As Single = Me.pictureBox1.Height / 2
-		Dim punto As Single = Me.pictureBox1.Height / 13
+		Dim punto As Single = Me.pictureBox1.Height / 16
 		Me.pictureBox1.CreateGraphics.DrawLine(New Pen(color.Blue,1), _
 		New PointF(centro + ((x1/2)*punto),centro + ((y1/-2)*punto)), _
 		New PointF(centro + ((x2/2)*punto),centro + ((y2/-2)*punto)) )
@@ -88,38 +88,38 @@ Public Partial Class MainForm
 		If cx = 0 or cy = 0 Then
 			printf("No es posible graficar con los parametros dados.")
 		elseIf cx < 0 or cx > 0 Then
-			texto = "Sustituir X a -14 para graficar en el área del plano"
+			texto = "Sustituir X a -16 para graficar en el área del plano"
 			printf(texto)
-			Dim menosy As Single = (constante -(cx*-14)) / cy 'Y
-			texto = "Punto 1 de la linea = (-14 , " & menosy & ")"
+			Dim menosy As Single = (constante -(cx*-16)) / cy 'Y
+			texto = "Punto 1 de la linea = (-16 , " & menosy & ")"
 			printf(texto)
-			Dim masy As Single = (constante -(cx*14)) / cy
-			texto = "Punto 2 de la linea = (14 , " & masy & ")"
+			Dim masy As Single = (constante -(cx*16)) / cy
+			texto = "Punto 2 de la linea = (16 , " & masy & ")"
 			printf(texto)
-			graficaLinea(-14,menosy,14,masy)
+			graficaLinea(-16,menosy,16,masy)
 			texto = "Se grafica la línea con los puntos mencionados"
 			printf(texto)
-			me.lblpe.Text = distancia(-14,menosy,14,masy)
+			me.lblpe.Text = distancia(-16,menosy,16,masy)
 		Else ' Se hace con y
-			texto = "Sustituir Y a -14 para graficar en el área del plano"
+			texto = "Sustituir Y a -16 para graficar en el área del plano"
 			printf(texto)
-			Dim menosx As Single = (constante -(cy*-14)) / cx 'X
-			texto = "Punto 1 de la linea = (" & menosx & " , -14)"
+			Dim menosx As Single = (constante -(cy*-16)) / cx 'X
+			texto = "Punto 1 de la linea = (" & menosx & " , -16)"
 			printf(texto)
-			Dim masx As Single = (constante -(cy*14)) / cx
-			texto = "Punto 2 de la linea = (" & masx & " , 14)"
+			Dim masx As Single = (constante -(cy*16)) / cx
+			texto = "Punto 2 de la linea = (" & masx & " , 16)"
 			printf(texto)
-			graficaLinea(menosx,-14,masx,14)
+			graficaLinea(menosx,-16,masx,16)
 			texto = "Se grafica la línea con los puntos mencionados"
 			printf(texto)
-			me.lblpe.Text = distancia(menosx,-14,masx,14)
+			me.lblpe.Text = distancia(menosx,-16,masx,16)
 		End If
 		printf("")'Dejando un enter
 	End Sub
 	Public Sub dibujacirculo(h As Single, k As Single, hr As Single, vr as single)
 		'Quitado el LOG de dibujacirculo, pasado a funciones mas altas
 		Dim centro As Single = Me.pictureBox1.Height / 2
-		Dim punto As Single = Me.pictureBox1.Height / 13
+		Dim punto As Single = Me.pictureBox1.Height / 16
 		h=centro+(punto/-2 * (h)) : k = centro+(punto/-2 * (k))
 		hr=punto * (hr) : vr=punto * (vr)
 		Me.pictureBox1.creategraphics.drawellipse(New pen(color.Blue,1), _
@@ -244,42 +244,28 @@ Public Partial Class MainForm
 	End Sub
 public sub trescircu(x1 as single, y1 as single, x2 as single, y2 as single, _
 x3 as single, y3 as single)
-	'Sigue sin funcionar correctamente
-	'Ecuacion: x^2 + y^2 + Dx + Ey + F = 0
-	dim ecua1(0 to 3), ecua2(0 to 3), ecua3(0 to 3) as single
-	'Exponenciando a 2 la parte constante de la ecuación
-	ecua1(0) = x1^2 + y1^2 : ecua2(0) = x2^2 + y2^2 : ecua3(0) = x3^2 + y3^2
-	'Lo siguiente vendría siendo agregar D y E
-	ecua1(1) = x1 : ecua1(2) = y1 : ecua2(1) = x2 : ecua2(2) = y2 : ecua3(1) = x3 : ecua3(2) = y3
-	Dim ecuaneg1(0 To 2) As Single : Dim i As integer
-	'Elimienar F de ecua 1 y 2
-	for i=0 to 2 step 1
-		ecuaneg1(i) = ecua1(i) - ecua2(i) 'Se saca F del partido para tener D y E solamente
-	next i
-	dim ecuaneg2(0 to 2) as single 'Otra ecuacion negativa
-	for i=0 to 2 step 1
-		ecuaneg2(i) = ecua2(i) - ecua3(i) 'Necesito otra ecuacion sin F
-	next i
-	'Ahora necesito el metodo de igualación
-	dim d1 as single = ecuaneg1(1) 'respaldo el coeficiente de D
-	dim d2 as single = ecuaneg2(1) 'Aqui tambien lo respaldo de la otra ecuación
-	for i=0 to 2 step 1 'El metodo se lo aplico a D
-		ecuaneg1(i) = ecuaneg1(i) * d2
-		ecuaneg2(i) = ecuaneg2(i) * d1
-	next i
-	'Ya estan multiplicados (segun) ahora necesito restarlos para sacar E
-	dim ecuagood(0 to 2) as single
-	for i=0 to 2 step 1 'Haciendo la resta de las ecuaciones negativas
-		ecuagood(i) = ecuaneg1(i) - ecuaneg2(i) 'Creo que asi es para eliminar D
-	next i
-	dim e as single = -ecuagood(0) / ecuagood(2)
-	dim d as single = -(ecuaneg1(0)+ecuaneg1(2))/ecuaneg1(1)
-	dim f as single = -(ecua1(0)+ecua1(1)*d+ecua1(2)*e)
-	Dim centrox As Single = -d/2
-	Dim centroy As Single = -e/2
-	Dim radio As Single = sqrt(d^2 + e^2 - 4*f)/2
-	dibujacirculo(centrox,centroy,radio,radio)
-end sub
+	'PHEERR THE POWA!
+	'Esta vez se hara por la manera del cincuncentro
+	'Obtener perpendiculares de AB y BC
+	dim m1, m2, p1x,p1y,p2x,p2y as single
+	m1 = -(y2 - y1)/(x2 - y1) ' AB
+	m2 = -(y3 - y2)/(x3 - x2) ' BC
+	p1y = (y2 + y1) / 2 : p1x = (x2 + x1) / 2 'Ab
+	p2y = (y3 + y2) / 2 : p2x = (x3 + x2) / 2'BC
+	'Sacando las ecuaciones
+	dim ecux1 , ecucons1, ecux2,ecucons2 as single ' Haciendo las ecuaciones
+	ecux1 = -m1
+	ecucons1= p1y - m1*p1x
+	ecux2 = -m2
+	ecucons2 = p2y - m1 * p2x
+	'Obtener los puntos finales
+	dim xfinal, yfinal as single
+	xfinal = (ecucons1-ecucons2)/(ecux1-ecux2)
+	yfinal = ecucons1-ecux1*xfinal
+	'Ya esta, ahora necesito el radio
+	dim radio as single = distancia(x1,y1,-xfinal,-yfinal)
+	dibujacirculo(-xfinal,-yfinal,radio,radio)
+end sub 
 	
 	Sub ButGrPHRClick(ByVal sender As Object, ByVal e As EventArgs)
 		on error goto err
@@ -335,15 +321,8 @@ end sub
 		dibujacirculo(-val(me.txtEliX.Text),val(me.txtEliY.Text),sqrt(val(me.txtEliX2.Text)),sqrt(VAL(me.txtEliY2.Text)))
 	End Sub
 	
-	Sub ButLimpClick(ByVal sender As Object, ByVal e As EventArgs)
+	Sub Button1Click(ByVal sender As Object, ByVal e As EventArgs)
+		cuadricula()
 		me.txtLog.Text = ""
-	End Sub
-	
-	Sub TabCirculoClick(ByVal sender As Object, ByVal e As EventArgs)
-		
-	End Sub
-	
-	Sub Label17Click(ByVal sender As Object, ByVal e As EventArgs)
-		
 	End Sub
 End Class

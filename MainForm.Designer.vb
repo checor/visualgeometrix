@@ -43,6 +43,7 @@ Partial Class MainForm
 	Private Sub InitializeComponent()
 		Me.tabLinea = New System.Windows.Forms.TabControl
 		Me.tabLineas = New System.Windows.Forms.TabPage
+		Me.lblpe = New System.Windows.Forms.Label
 		Me.lblPeri = New System.Windows.Forms.Label
 		Me.butCalculapl = New System.Windows.Forms.Button
 		Me.txtLinea4 = New System.Windows.Forms.TextBox
@@ -118,28 +119,17 @@ Partial Class MainForm
 		Me.label15 = New System.Windows.Forms.Label
 		Me.label16 = New System.Windows.Forms.Label
 		Me.label17 = New System.Windows.Forms.Label
-		Me.tabProcedimiento = New System.Windows.Forms.TabPage
-		Me.butLimp = New System.Windows.Forms.Button
-		Me.label12 = New System.Windows.Forms.Label
-		Me.txtLog = New System.Windows.Forms.TextBox
 		Me.pictureBox1 = New System.Windows.Forms.PictureBox
 		Me.lblTitle = New System.Windows.Forms.Label
-		Me.menuStrip1 = New System.Windows.Forms.MenuStrip
-		Me.archivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.preferenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.salirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.ayudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.temasDeAyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.acercaDeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-		Me.lblpe = New System.Windows.Forms.Label
+		Me.txtLog = New System.Windows.Forms.TextBox
+		Me.label18 = New System.Windows.Forms.Label
+		Me.button1 = New System.Windows.Forms.Button
 		Me.tabLinea.SuspendLayout
 		Me.tabLineas.SuspendLayout
 		Me.tabCirculo.SuspendLayout
 		Me.tabParabola.SuspendLayout
 		Me.tabElipse.SuspendLayout
-		Me.tabProcedimiento.SuspendLayout
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).BeginInit
-		Me.menuStrip1.SuspendLayout
 		Me.SuspendLayout
 		'
 		'tabLinea
@@ -148,13 +138,12 @@ Partial Class MainForm
 		Me.tabLinea.Controls.Add(Me.tabCirculo)
 		Me.tabLinea.Controls.Add(Me.tabParabola)
 		Me.tabLinea.Controls.Add(Me.tabElipse)
-		Me.tabLinea.Controls.Add(Me.tabProcedimiento)
 		Me.tabLinea.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.tabLinea.Location = New System.Drawing.Point(3, 79)
+		Me.tabLinea.Location = New System.Drawing.Point(3, 46)
 		Me.tabLinea.Name = "tabLinea"
 		Me.tabLinea.SelectedIndex = 0
-		Me.tabLinea.Size = New System.Drawing.Size(418, 339)
-		Me.tabLinea.TabIndex = 0
+		Me.tabLinea.Size = New System.Drawing.Size(363, 260)
+		Me.tabLinea.TabIndex = 1
 		'
 		'tabLineas
 		'
@@ -176,18 +165,25 @@ Partial Class MainForm
 		Me.tabLineas.Location = New System.Drawing.Point(4, 29)
 		Me.tabLineas.Name = "tabLineas"
 		Me.tabLineas.Padding = New System.Windows.Forms.Padding(3)
-		Me.tabLineas.Size = New System.Drawing.Size(410, 306)
+		Me.tabLineas.Size = New System.Drawing.Size(355, 227)
 		Me.tabLineas.TabIndex = 0
 		Me.tabLineas.Text = "Lineas"
 		Me.tabLineas.UseVisualStyleBackColor = true
 		'
+		'lblpe
+		'
+		Me.lblpe.Location = New System.Drawing.Point(171, 193)
+		Me.lblpe.Name = "lblpe"
+		Me.lblpe.Size = New System.Drawing.Size(164, 22)
+		Me.lblpe.TabIndex = 19
+		'
 		'lblPeri
 		'
-		Me.lblPeri.Location = New System.Drawing.Point(13, 242)
+		Me.lblPeri.Location = New System.Drawing.Point(11, 193)
 		Me.lblPeri.Name = "lblPeri"
 		Me.lblPeri.Size = New System.Drawing.Size(244, 34)
 		Me.lblPeri.TabIndex = 18
-		Me.lblPeri.Text = "Perimetro de la linea (aprox):"
+		Me.lblPeri.Text = "Distancia (aprox):"
 		'
 		'butCalculapl
 		'
@@ -229,7 +225,7 @@ Partial Class MainForm
 		'
 		'label3
 		'
-		Me.label3.Location = New System.Drawing.Point(15, 114)
+		Me.label3.Location = New System.Drawing.Point(11, 104)
 		Me.label3.Name = "label3"
 		Me.label3.Size = New System.Drawing.Size(274, 23)
 		Me.label3.TabIndex = 8
@@ -321,11 +317,10 @@ Partial Class MainForm
 		Me.tabCirculo.Location = New System.Drawing.Point(4, 29)
 		Me.tabCirculo.Name = "tabCirculo"
 		Me.tabCirculo.Padding = New System.Windows.Forms.Padding(3)
-		Me.tabCirculo.Size = New System.Drawing.Size(410, 306)
+		Me.tabCirculo.Size = New System.Drawing.Size(355, 227)
 		Me.tabCirculo.TabIndex = 1
-		Me.tabCirculo.Text = "Circulo"
+		Me.tabCirculo.Text = "Circunferencia"
 		Me.tabCirculo.UseVisualStyleBackColor = true
-		AddHandler Me.tabCirculo.Click, AddressOf Me.TabCirculoClick
 		'
 		'label14
 		'
@@ -375,49 +370,49 @@ Partial Class MainForm
 		'
 		'txty1cir
 		'
-		Me.txty1cir.Location = New System.Drawing.Point(46, 196)
+		Me.txty1cir.Location = New System.Drawing.Point(46, 179)
 		Me.txty1cir.Name = "txty1cir"
 		Me.txty1cir.Size = New System.Drawing.Size(18, 26)
 		Me.txty1cir.TabIndex = 21
 		'
 		'txtx2cir
 		'
-		Me.txtx2cir.Location = New System.Drawing.Point(84, 196)
+		Me.txtx2cir.Location = New System.Drawing.Point(86, 179)
 		Me.txtx2cir.Name = "txtx2cir"
 		Me.txtx2cir.Size = New System.Drawing.Size(18, 26)
 		Me.txtx2cir.TabIndex = 20
 		'
 		'txty3cir
 		'
-		Me.txty3cir.Location = New System.Drawing.Point(176, 196)
+		Me.txty3cir.Location = New System.Drawing.Point(182, 179)
 		Me.txty3cir.Name = "txty3cir"
 		Me.txty3cir.Size = New System.Drawing.Size(18, 26)
 		Me.txty3cir.TabIndex = 19
 		'
 		'txtx3cir
 		'
-		Me.txtx3cir.Location = New System.Drawing.Point(150, 196)
+		Me.txtx3cir.Location = New System.Drawing.Point(152, 179)
 		Me.txtx3cir.Name = "txtx3cir"
 		Me.txtx3cir.Size = New System.Drawing.Size(18, 26)
 		Me.txtx3cir.TabIndex = 18
 		'
 		'txty2cir
 		'
-		Me.txty2cir.Location = New System.Drawing.Point(114, 196)
+		Me.txty2cir.Location = New System.Drawing.Point(114, 179)
 		Me.txty2cir.Name = "txty2cir"
 		Me.txty2cir.Size = New System.Drawing.Size(18, 26)
 		Me.txty2cir.TabIndex = 17
 		'
 		'txtx1cir
 		'
-		Me.txtx1cir.Location = New System.Drawing.Point(19, 195)
+		Me.txtx1cir.Location = New System.Drawing.Point(22, 179)
 		Me.txtx1cir.Name = "txtx1cir"
 		Me.txtx1cir.Size = New System.Drawing.Size(18, 26)
 		Me.txtx1cir.TabIndex = 16
 		'
 		'label8
 		'
-		Me.label8.Location = New System.Drawing.Point(12, 152)
+		Me.label8.Location = New System.Drawing.Point(10, 136)
 		Me.label8.Name = "label8"
 		Me.label8.Size = New System.Drawing.Size(298, 43)
 		Me.label8.TabIndex = 15
@@ -514,7 +509,7 @@ Partial Class MainForm
 		'label9
 		'
 		Me.label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label9.Location = New System.Drawing.Point(7, 199)
+		Me.label9.Location = New System.Drawing.Point(10, 181)
 		Me.label9.Name = "label9"
 		Me.label9.Size = New System.Drawing.Size(238, 24)
 		Me.label9.TabIndex = 22
@@ -550,7 +545,7 @@ Partial Class MainForm
 		Me.tabParabola.Controls.Add(Me.label27)
 		Me.tabParabola.Location = New System.Drawing.Point(4, 29)
 		Me.tabParabola.Name = "tabParabola"
-		Me.tabParabola.Size = New System.Drawing.Size(410, 306)
+		Me.tabParabola.Size = New System.Drawing.Size(355, 227)
 		Me.tabParabola.TabIndex = 2
 		Me.tabParabola.Text = "Parabola"
 		Me.tabParabola.UseVisualStyleBackColor = true
@@ -558,7 +553,7 @@ Partial Class MainForm
 		'label29
 		'
 		Me.label29.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label29.Location = New System.Drawing.Point(31, 195)
+		Me.label29.Location = New System.Drawing.Point(33, 167)
 		Me.label29.Name = "label29"
 		Me.label29.Size = New System.Drawing.Size(16, 14)
 		Me.label29.TabIndex = 47
@@ -566,7 +561,7 @@ Partial Class MainForm
 		'
 		'butGrPVG
 		'
-		Me.butGrPVG.Location = New System.Drawing.Point(215, 207)
+		Me.butGrPVG.Location = New System.Drawing.Point(217, 171)
 		Me.butGrPVG.Name = "butGrPVG"
 		Me.butGrPVG.Size = New System.Drawing.Size(101, 25)
 		Me.butGrPVG.TabIndex = 46
@@ -576,7 +571,7 @@ Partial Class MainForm
 		'
 		'butGrPVR
 		'
-		Me.butGrPVR.Location = New System.Drawing.Point(215, 157)
+		Me.butGrPVR.Location = New System.Drawing.Point(215, 133)
 		Me.butGrPVR.Name = "butGrPVR"
 		Me.butGrPVR.Size = New System.Drawing.Size(101, 27)
 		Me.butGrPVR.TabIndex = 45
@@ -606,42 +601,42 @@ Partial Class MainForm
 		'
 		'txtPvrA
 		'
-		Me.txtPvrA.Location = New System.Drawing.Point(51, 157)
+		Me.txtPvrA.Location = New System.Drawing.Point(51, 133)
 		Me.txtPvrA.Name = "txtPvrA"
 		Me.txtPvrA.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrA.TabIndex = 42
 		'
 		'txtPvrF
 		'
-		Me.txtPvrF.Location = New System.Drawing.Point(142, 203)
+		Me.txtPvrF.Location = New System.Drawing.Point(142, 170)
 		Me.txtPvrF.Name = "txtPvrF"
 		Me.txtPvrF.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrF.TabIndex = 41
 		'
 		'txtPvrE
 		'
-		Me.txtPvrE.Location = New System.Drawing.Point(96, 203)
+		Me.txtPvrE.Location = New System.Drawing.Point(96, 170)
 		Me.txtPvrE.Name = "txtPvrE"
 		Me.txtPvrE.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrE.TabIndex = 40
 		'
 		'txtPvrD
 		'
-		Me.txtPvrD.Location = New System.Drawing.Point(49, 203)
+		Me.txtPvrD.Location = New System.Drawing.Point(49, 170)
 		Me.txtPvrD.Name = "txtPvrD"
 		Me.txtPvrD.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrD.TabIndex = 39
 		'
 		'txtPvrB
 		'
-		Me.txtPvrB.Location = New System.Drawing.Point(156, 156)
+		Me.txtPvrB.Location = New System.Drawing.Point(153, 133)
 		Me.txtPvrB.Name = "txtPvrB"
 		Me.txtPvrB.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrB.TabIndex = 38
 		'
 		'txtPvrP
 		'
-		Me.txtPvrP.Location = New System.Drawing.Point(103, 155)
+		Me.txtPvrP.Location = New System.Drawing.Point(101, 133)
 		Me.txtPvrP.Name = "txtPvrP"
 		Me.txtPvrP.Size = New System.Drawing.Size(22, 26)
 		Me.txtPvrP.TabIndex = 37
@@ -649,7 +644,7 @@ Partial Class MainForm
 		'label28
 		'
 		Me.label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label28.Location = New System.Drawing.Point(79, 143)
+		Me.label28.Location = New System.Drawing.Point(79, 130)
 		Me.label28.Name = "label28"
 		Me.label28.Size = New System.Drawing.Size(16, 14)
 		Me.label28.TabIndex = 36
@@ -658,7 +653,7 @@ Partial Class MainForm
 		'label26
 		'
 		Me.label26.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label26.Location = New System.Drawing.Point(21, 160)
+		Me.label26.Location = New System.Drawing.Point(21, 138)
 		Me.label26.Name = "label26"
 		Me.label26.Size = New System.Drawing.Size(218, 26)
 		Me.label26.TabIndex = 34
@@ -688,9 +683,9 @@ Partial Class MainForm
 		'label25
 		'
 		Me.label25.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label25.Location = New System.Drawing.Point(22, 209)
+		Me.label25.Location = New System.Drawing.Point(22, 176)
 		Me.label25.Name = "label25"
-		Me.label25.Size = New System.Drawing.Size(218, 32)
+		Me.label25.Size = New System.Drawing.Size(189, 32)
 		Me.label25.TabIndex = 30
 		Me.label25.Text = "x  +       x +       y +      = 0"
 		'
@@ -727,7 +722,7 @@ Partial Class MainForm
 		'label23
 		'
 		Me.label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.label23.Location = New System.Drawing.Point(75, 28)
+		Me.label23.Location = New System.Drawing.Point(76, 32)
 		Me.label23.Name = "label23"
 		Me.label23.Size = New System.Drawing.Size(16, 14)
 		Me.label23.TabIndex = 25
@@ -744,19 +739,19 @@ Partial Class MainForm
 		'
 		'label21
 		'
-		Me.label21.Location = New System.Drawing.Point(14, 117)
+		Me.label21.Location = New System.Drawing.Point(17, 105)
 		Me.label21.Name = "label21"
-		Me.label21.Size = New System.Drawing.Size(288, 21)
+		Me.label21.Size = New System.Drawing.Size(335, 21)
 		Me.label21.TabIndex = 1
-		Me.label21.Text = "Inserte la ecuacion de la parabola vertical"
+		Me.label21.Text = "Ecuación de parábola vertical:"
 		'
 		'label20
 		'
-		Me.label20.Location = New System.Drawing.Point(17, 13)
+		Me.label20.Location = New System.Drawing.Point(17, 11)
 		Me.label20.Name = "label20"
-		Me.label20.Size = New System.Drawing.Size(302, 19)
+		Me.label20.Size = New System.Drawing.Size(335, 19)
 		Me.label20.TabIndex = 0
-		Me.label20.Text = "Inserte la ecuación de la parabola horizontal:"
+		Me.label20.Text = "Ecuación de parabola horizontal:"
 		'
 		'label27
 		'
@@ -779,14 +774,14 @@ Partial Class MainForm
 		Me.tabElipse.Controls.Add(Me.label17)
 		Me.tabElipse.Location = New System.Drawing.Point(4, 29)
 		Me.tabElipse.Name = "tabElipse"
-		Me.tabElipse.Size = New System.Drawing.Size(330, 302)
+		Me.tabElipse.Size = New System.Drawing.Size(355, 227)
 		Me.tabElipse.TabIndex = 4
 		Me.tabElipse.Text = "Elipse"
 		Me.tabElipse.UseVisualStyleBackColor = true
 		'
 		'butElipse
 		'
-		Me.butElipse.Location = New System.Drawing.Point(213, 100)
+		Me.butElipse.Location = New System.Drawing.Point(208, 90)
 		Me.butElipse.Name = "butElipse"
 		Me.butElipse.Size = New System.Drawing.Size(108, 26)
 		Me.butElipse.TabIndex = 8
@@ -810,14 +805,14 @@ Partial Class MainForm
 		'
 		'txtEliY2
 		'
-		Me.txtEliY2.Location = New System.Drawing.Point(115, 98)
+		Me.txtEliY2.Location = New System.Drawing.Point(115, 90)
 		Me.txtEliY2.Name = "txtEliY2"
 		Me.txtEliY2.Size = New System.Drawing.Size(52, 26)
 		Me.txtEliY2.TabIndex = 2
 		'
 		'txtEliX2
 		'
-		Me.txtEliX2.Location = New System.Drawing.Point(34, 98)
+		Me.txtEliX2.Location = New System.Drawing.Point(35, 90)
 		Me.txtEliX2.Name = "txtEliX2"
 		Me.txtEliX2.Size = New System.Drawing.Size(52, 26)
 		Me.txtEliX2.TabIndex = 1
@@ -847,54 +842,12 @@ Partial Class MainForm
 		Me.label17.TabIndex = 9
 		Me.label17.Text = "______   ______"
 		'
-		'tabProcedimiento
-		'
-		Me.tabProcedimiento.Controls.Add(Me.butLimp)
-		Me.tabProcedimiento.Controls.Add(Me.label12)
-		Me.tabProcedimiento.Controls.Add(Me.txtLog)
-		Me.tabProcedimiento.Location = New System.Drawing.Point(4, 29)
-		Me.tabProcedimiento.Name = "tabProcedimiento"
-		Me.tabProcedimiento.Padding = New System.Windows.Forms.Padding(3)
-		Me.tabProcedimiento.Size = New System.Drawing.Size(410, 306)
-		Me.tabProcedimiento.TabIndex = 3
-		Me.tabProcedimiento.Text = "Procedimiento"
-		Me.tabProcedimiento.UseVisualStyleBackColor = true
-		'
-		'butLimp
-		'
-		Me.butLimp.Location = New System.Drawing.Point(251, 276)
-		Me.butLimp.Name = "butLimp"
-		Me.butLimp.Size = New System.Drawing.Size(82, 31)
-		Me.butLimp.TabIndex = 2
-		Me.butLimp.Text = "Limpiar"
-		Me.butLimp.UseVisualStyleBackColor = true
-		AddHandler Me.butLimp.Click, AddressOf Me.ButLimpClick
-		'
-		'label12
-		'
-		Me.label12.Location = New System.Drawing.Point(8, 9)
-		Me.label12.Name = "label12"
-		Me.label12.Size = New System.Drawing.Size(293, 18)
-		Me.label12.TabIndex = 1
-		Me.label12.Text = "Procedimiento de la última acción:"
-		'
-		'txtLog
-		'
-		Me.txtLog.Cursor = System.Windows.Forms.Cursors.Default
-		Me.txtLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.txtLog.Location = New System.Drawing.Point(8, 34)
-		Me.txtLog.Multiline = true
-		Me.txtLog.Name = "txtLog"
-		Me.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-		Me.txtLog.Size = New System.Drawing.Size(325, 236)
-		Me.txtLog.TabIndex = 0
-		'
 		'pictureBox1
 		'
 		Me.pictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(192,Byte),Integer), CType(CType(128,Byte),Integer))
-		Me.pictureBox1.Location = New System.Drawing.Point(424, 108)
+		Me.pictureBox1.Location = New System.Drawing.Point(372, 12)
 		Me.pictureBox1.Name = "pictureBox1"
-		Me.pictureBox1.Size = New System.Drawing.Size(260, 260)
+		Me.pictureBox1.Size = New System.Drawing.Size(320, 320)
 		Me.pictureBox1.TabIndex = 1
 		Me.pictureBox1.TabStop = false
 		AddHandler Me.pictureBox1.Click, AddressOf Me.PictureBox1Click
@@ -902,77 +855,54 @@ Partial Class MainForm
 		'lblTitle
 		'
 		Me.lblTitle.Font = New System.Drawing.Font("Gill Sans MT", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
-		Me.lblTitle.Location = New System.Drawing.Point(16, 27)
+		Me.lblTitle.Location = New System.Drawing.Point(12, 9)
 		Me.lblTitle.Name = "lblTitle"
 		Me.lblTitle.Size = New System.Drawing.Size(304, 34)
 		Me.lblTitle.TabIndex = 2
 		Me.lblTitle.Text = "Visual Geometrix"
 		'
-		'menuStrip1
+		'txtLog
 		'
-		Me.menuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.archivoToolStripMenuItem, Me.ayudaToolStripMenuItem})
-		Me.menuStrip1.Location = New System.Drawing.Point(0, 0)
-		Me.menuStrip1.Name = "menuStrip1"
-		Me.menuStrip1.Size = New System.Drawing.Size(576, 24)
-		Me.menuStrip1.TabIndex = 3
-		Me.menuStrip1.Text = "menuStrip1"
-		Me.menuStrip1.Visible = false
+		Me.txtLog.Cursor = System.Windows.Forms.Cursors.Default
+		Me.txtLog.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.txtLog.Location = New System.Drawing.Point(7, 341)
+		Me.txtLog.Multiline = true
+		Me.txtLog.Name = "txtLog"
+		Me.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+		Me.txtLog.Size = New System.Drawing.Size(685, 125)
+		Me.txtLog.TabIndex = 3
 		'
-		'archivoToolStripMenuItem
+		'label18
 		'
-		Me.archivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.preferenciasToolStripMenuItem, Me.salirToolStripMenuItem})
-		Me.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem"
-		Me.archivoToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
-		Me.archivoToolStripMenuItem.Text = "&Archivo"
+		Me.label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.label18.Location = New System.Drawing.Point(7, 314)
+		Me.label18.Name = "label18"
+		Me.label18.Size = New System.Drawing.Size(263, 18)
+		Me.label18.TabIndex = 4
+		Me.label18.Text = "Procedimiento de las acciones:"
 		'
-		'preferenciasToolStripMenuItem
+		'button1
 		'
-		Me.preferenciasToolStripMenuItem.Name = "preferenciasToolStripMenuItem"
-		Me.preferenciasToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-		Me.preferenciasToolStripMenuItem.Text = "&Preferencias..."
-		'
-		'salirToolStripMenuItem
-		'
-		Me.salirToolStripMenuItem.Name = "salirToolStripMenuItem"
-		Me.salirToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-		Me.salirToolStripMenuItem.Text = "&Salir"
-		'
-		'ayudaToolStripMenuItem
-		'
-		Me.ayudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.temasDeAyudaToolStripMenuItem, Me.acercaDeToolStripMenuItem})
-		Me.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem"
-		Me.ayudaToolStripMenuItem.Size = New System.Drawing.Size(50, 20)
-		Me.ayudaToolStripMenuItem.Text = "Ayuda"
-		'
-		'temasDeAyudaToolStripMenuItem
-		'
-		Me.temasDeAyudaToolStripMenuItem.Name = "temasDeAyudaToolStripMenuItem"
-		Me.temasDeAyudaToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-		Me.temasDeAyudaToolStripMenuItem.Text = "Temas de ayuda"
-		'
-		'acercaDeToolStripMenuItem
-		'
-		Me.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem"
-		Me.acercaDeToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
-		Me.acercaDeToolStripMenuItem.Text = "Acerca de..."
-		'
-		'lblpe
-		'
-		Me.lblpe.Location = New System.Drawing.Point(263, 242)
-		Me.lblpe.Name = "lblpe"
-		Me.lblpe.Size = New System.Drawing.Size(141, 22)
-		Me.lblpe.TabIndex = 19
+		Me.button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+		Me.button1.Location = New System.Drawing.Point(276, 308)
+		Me.button1.Name = "button1"
+		Me.button1.Size = New System.Drawing.Size(82, 31)
+		Me.button1.TabIndex = 5
+		Me.button1.Text = "Limpiar"
+		Me.button1.UseVisualStyleBackColor = true
+		AddHandler Me.button1.Click, AddressOf Me.Button1Click
 		'
 		'MainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(692, 516)
+		Me.ClientSize = New System.Drawing.Size(726, 478)
+		Me.Controls.Add(Me.button1)
+		Me.Controls.Add(Me.label18)
+		Me.Controls.Add(Me.txtLog)
 		Me.Controls.Add(Me.lblTitle)
 		Me.Controls.Add(Me.pictureBox1)
 		Me.Controls.Add(Me.tabLinea)
-		Me.Controls.Add(Me.menuStrip1)
-		Me.MainMenuStrip = Me.menuStrip1
 		Me.Name = "MainForm"
 		Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 		Me.Text = "Visual Geometrix"
@@ -985,16 +915,13 @@ Partial Class MainForm
 		Me.tabParabola.PerformLayout
 		Me.tabElipse.ResumeLayout(false)
 		Me.tabElipse.PerformLayout
-		Me.tabProcedimiento.ResumeLayout(false)
-		Me.tabProcedimiento.PerformLayout
 		CType(Me.pictureBox1,System.ComponentModel.ISupportInitialize).EndInit
-		Me.menuStrip1.ResumeLayout(false)
-		Me.menuStrip1.PerformLayout
 		Me.ResumeLayout(false)
 		Me.PerformLayout
 	End Sub
+	Private button1 As System.Windows.Forms.Button
+	Private label18 As System.Windows.Forms.Label
 	Private lblpe As System.Windows.Forms.Label
-	Private butLimp As System.Windows.Forms.Button
 	Private label17 As System.Windows.Forms.Label
 	Private label16 As System.Windows.Forms.Label
 	Private label15 As System.Windows.Forms.Label
@@ -1010,8 +937,6 @@ Partial Class MainForm
 	Private txty2cir As System.Windows.Forms.TextBox
 	Private txtx1cir As System.Windows.Forms.TextBox
 	Private txtLog As System.Windows.Forms.TextBox
-	Private label12 As System.Windows.Forms.Label
-	Private tabProcedimiento As System.Windows.Forms.TabPage
 	Private tabElipse As System.Windows.Forms.TabPage
 	Private txtPvrF As System.Windows.Forms.TextBox
 	Private label29 As System.Windows.Forms.Label
@@ -1052,13 +977,6 @@ Partial Class MainForm
 	Private butEcuacircu2 As System.Windows.Forms.Button
 	Private butEcuacircu1 As System.Windows.Forms.Button
 	Private txtCoEc1 As System.Windows.Forms.TextBox
-	Private acercaDeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private temasDeAyudaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private ayudaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private salirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private preferenciasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private archivoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-	Private menuStrip1 As System.Windows.Forms.MenuStrip
 	Private label9 As System.Windows.Forms.Label
 	Private label7 As System.Windows.Forms.Label
 	Private label5 As System.Windows.Forms.Label
